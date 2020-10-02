@@ -1,5 +1,6 @@
 package org.absolute.IoC;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
@@ -11,13 +12,16 @@ public class UsoEmpleados {
 //
 //        //uso de los objetos creados
 //        System.out.println("jefeEmpleado1.getTareas() = " + jefeEmpleado1.getTareas());
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        Empleados Juan = context.getBean("miEmpleado",Empleados.class);
 //        System.out.println("args = " + Juan.getTareas());
 //        System.out.println("args = " + Juan.getInforme());
-        Empleados empleados = context.getBean("miSecretarioEmpleado",Empleados.class);
+        SecretarioEmpleado empleados = context.getBean("miSecretarioEmpleado",SecretarioEmpleado.class);
         System.out.println("args = " + empleados.getTareas());
         System.out.println("args = " + empleados.getInforme());
-        context.close();
+        System.out.println("UsoEmpleados.main "+empleados.getEmail());
+        //context.close();
+
     }
 }

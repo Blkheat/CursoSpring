@@ -9,20 +9,15 @@
     http://www.springframework.org/schema/context/spring-context-3.1.xsd
 ">
     <context:property-placeholder location="classpath:datosEmpresa.propiedades"></context:property-placeholder>
-    <bean id="miInforme" class="org.absolute.IoC.Informe">
 
-    </bean>
-    <bean id="miEmpleado" class="org.absolute.IoC.JefeEmpleado">
-        <constructor-arg ref="miInforme">
+    <bean id="miInforme" class="org.absolute.IoC.Informe"></bean>
 
-        </constructor-arg>
-    </bean>
-    <bean id="miSecretarioEmpleado" class="org.absolute.IoC.SecretarioEmpleado">
-        <property name="creacionInformes" ref="miInforme">
 
-        </property>
-        <property name="email" value="${email}"></property>
-        <property name="nombreEmpresa" value="AbsoluteEmpresa"></property>
+
+    <bean id="miEmpleado" class="org.absolute.IoC.DirectorEmpleado" scope="prototype" init-method="metodoInicial" destroy-method="metodoFinal">
+
+        <constructor-arg ref="miInforme"></constructor-arg>
+
 
     </bean>
 
